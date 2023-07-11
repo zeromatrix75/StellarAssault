@@ -43,6 +43,19 @@ public class Player : MonoBehaviour
      //   GameObject newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         
     //    newProjectile.GetComponent()<Projectile>.LaunchProjectile(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+ 
     //}
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        
+            health--;
+            Debug.Log("Player health: " + health);
 
+            if(health == 0){
+               // boomSound = GetComponent<AudioSource>();
+                //boomSound.Play();
+                Destroy(this.gameObject);
+                //Invoke("LoadMainMenu", 1.5f);//Wait one second before using method LoadMainMenu()
+            }
+    }
 }

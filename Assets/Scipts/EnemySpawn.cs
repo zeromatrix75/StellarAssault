@@ -11,8 +11,8 @@ public class EnemySpawn : MonoBehaviour
     Camera mainCamera;
     float cameraHeight;
     float cameraWidth;
-    float minY;
-    float maxY;
+    public float minY;
+    public float maxY;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +20,8 @@ public class EnemySpawn : MonoBehaviour
         mainCamera = Camera.main;
         cameraHeight = mainCamera.orthographicSize;//Get Camera height to put projecile slightly above it
         cameraWidth = cameraHeight * mainCamera.aspect;
-        minY = -4.0f;//mainCamera.transform.position.x - cameraWidth;
-        maxY = 4.0f; //mainCamera.transform.position.x + cameraWidth;
+        //minY = -4.0f;//mainCamera.transform.position.x - cameraWidth;
+        //maxY = 4.0f; //mainCamera.transform.position.x + cameraWidth;
     }
 
     // Update is called once per frame
