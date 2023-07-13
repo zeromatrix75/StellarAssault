@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PointsDisplay : MonoBehaviour
 {
     public Player player;
     Text pointsText;

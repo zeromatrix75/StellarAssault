@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boomSound: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &3723318264589514726
 MonoBehaviour:
   m_ObjectHideFlags: 0

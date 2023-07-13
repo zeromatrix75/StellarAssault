@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
         //set position of plane
         rb = GetComponent<Rigidbody2D>();
+        GameManager.player = this;
     }
     // Start is called before the first frame update
     void Start()

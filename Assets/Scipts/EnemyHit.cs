@@ -7,6 +7,7 @@ public class EnemyHit : MonoBehaviour
 {
 
     public AudioSource boomSound;
+    public Player player;
 /*
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,13 +37,21 @@ public class EnemyHit : MonoBehaviour
     
         if (collidedObject.CompareTag("Player"))
         {
-            Player player = collidedObject.GetComponent<Player>();
+            player = collidedObject.GetComponent<Player>();
             if (player != null)
             {
                 // Code for handling collision with the Player object
                 player.health--;
                 Debug.Log("Success: " + player.health);
             }
+        }
+
+        if (collidedObject.CompareTag("Projectile1"))
+        {
+
+                // Code for handling collision with the Player object
+                GameManager.player.points+=10;
+
         }
         /*
                 if (player != null){
@@ -59,6 +68,8 @@ public class EnemyHit : MonoBehaviour
         }
         }
         else*/
+
+                
         
                 boomSound = GetComponent<AudioSource>();
                 boomSound.Play();
