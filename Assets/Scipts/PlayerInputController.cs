@@ -21,6 +21,7 @@ public class PlayerInputController : MonoBehaviour
     {
         move = GetComponent<Movement>();
         player = GetComponent<Player>();
+        GameManager.inputController = this;
     }
 
     void FixedUpdate()

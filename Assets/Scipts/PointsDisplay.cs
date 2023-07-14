@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PointsDisplay : MonoBehaviour
 {
-    public Player player;
     Text pointsText;
 
     void Awake(){
@@ -19,6 +18,6 @@ public class PointsDisplay : MonoBehaviour
 
     void Update()
     {
-        pointsText.text = "Score: " + player.points.ToString();
+        pointsText.text = "Score: " + GameManager.player.points.ToString();
     }
 }
