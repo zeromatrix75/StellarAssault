@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -27,7 +28,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position += new Vector3(3.0f,0,0) * Time.deltaTime;
+                //Go back to Main Menu on 0 HP. TODO add game over screen
+        if(this.health == 0){
+            SceneManager.LoadScene("MainMenu");
+        }//transform.position += new Vector3(3.0f,0,0) * Time.deltaTime;
     }
 
    // public void RandomizeColor(){
