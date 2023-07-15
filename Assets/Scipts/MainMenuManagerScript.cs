@@ -31,6 +31,8 @@ public class MainMenuManagerScript : MonoBehaviour
         audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource != null && audioClip != null){
             audioSource.PlayOneShot(audioClip);
+            //Prevent Sound from Cutting Off
+            DontDestroyOnLoad(audioSource.gameObject);
         }
         else{
             Debug.Log("AudioSource is NULL");
@@ -42,7 +44,7 @@ public class MainMenuManagerScript : MonoBehaviour
 
     private IEnumerator Waiting()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.7f);
         SceneManager.LoadScene(sceneNameToLoad);
     }
 

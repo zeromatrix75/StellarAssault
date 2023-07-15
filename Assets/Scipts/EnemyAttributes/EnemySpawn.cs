@@ -49,7 +49,7 @@ public class EnemySpawn : MonoBehaviour
     void SpawnProjectile(Vector2 spawnPosition)
     {
         GameObject newProjectile = Instantiate(Enemy, spawnPosition, Quaternion.identity);
-        Destroy(newProjectile, 10);//Destroys projectile after 2 seconds
+        Destroy(newProjectile, 10);//Destroys projectile after 10 seconds
     }
 
 

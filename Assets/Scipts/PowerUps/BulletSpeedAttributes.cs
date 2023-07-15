@@ -5,19 +5,47 @@ using UnityEngine;
 public class BulletSpeedAttributes : MonoBehaviour
 {
 
-    
+    private Movement move;
     private SpriteRenderer sr;
+    private float colorChangeDelay = 0.1f; // Delay between color changes in seconds
+    private Vector3 direction;
+    public float speed = 10.0f;
+    public int steadinessConstant = 5;
+    private int steadiness; 
+    private float yDirection;
+    
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        InvokeRepeating("ChangeObjectColor", colorChangeDelay, colorChangeDelay);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Awake() 
     {
+        move = GetComponent<Movement>();
+         steadiness = steadinessConstant;    
+    }
 
-        sr.color = new Color(Random.Range(0f,1f), Random.Range(0f,1f),Random.Range(0,1f));
+    void Update(){
+        if(steadiness == 0)
+        {
+            yDirection = Random.Range(-1f, 1f);
+            steadiness = steadinessConstant;
+        }
+        else
+        {   
+            steadiness--;
+        }
+         direction = new Vector3(-1f, yDirection, 0f);
+         move.Move(direction, speed);
+    }
+
+
+    // Update is called once per frame
+    void ChangeObjectColor()
+    {
+        sr.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
     void OnCollisionEnter2D(Collision2D collision){
