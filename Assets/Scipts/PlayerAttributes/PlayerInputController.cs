@@ -13,7 +13,7 @@ public class PlayerInputController : MonoBehaviour
     private bool isFiring = false; // Flag to track if the space button is being held down
     private bool canFire = true; // Flag to track if the player can fire a projectile
     public float firingSpeed = .5f;//fastest should only be .15f otherwise will mess with rigidbody
-    public int projectileCount = 1;
+    public int projectileCount = 1; //Amount of projectiles shot at one time. Max of 3
 
 
 

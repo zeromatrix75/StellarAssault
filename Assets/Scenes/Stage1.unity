@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthup: {fileID: 6441951165151229366, guid: b7bd870b27e25b7489eb629383315f36, type: 3}
   speedup: {fileID: 3763565192612464211, guid: 1a09768a804f3e741ada8647e3176fb9, type: 3}
+  powerup: {fileID: 5792383788159569070, guid: 1ff7ecb1144cdc2479176479d3d95064, type: 3}
   minY: -8
   maxY: 7
 --- !u!1 &88279344
@@ -1503,7 +1504,7 @@ PrefabInstance:
       objectReference: {fileID: 1433663436}
     - target: {fileID: 8142226681190699715, guid: 8152a562f91a0854d8e785f6b18a15ad, type: 3}
       propertyPath: projectileCount
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8142226681190699715, guid: 8152a562f91a0854d8e785f6b18a15ad, type: 3}
       propertyPath: projectileAction

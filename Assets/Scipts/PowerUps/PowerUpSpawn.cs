@@ -6,6 +6,7 @@ public class PowerUpSpawn : MonoBehaviour
 {
     public GameObject healthup;
     public GameObject speedup;
+    public GameObject powerup;
     private float spawnInterval = 10.0f; // Interval in seconds between each spawn
     private float timer = 0f; 
 
@@ -78,7 +79,7 @@ public class PowerUpSpawn : MonoBehaviour
 
     void SpawnBulletUp(Vector2 spawnPosition)
     {
-        GameObject powerspawn = Instantiate(speedup, spawnPosition, Quaternion.identity);
+        GameObject powerspawn = Instantiate(powerup, spawnPosition, Quaternion.identity);
         Destroy(powerspawn, 5);
     }
 
