@@ -14,3 +14,4 @@ public class OptionsMenu : MonoBehaviour
         GetComponent<Canvas>().enabled = false;
     }
 }
+
