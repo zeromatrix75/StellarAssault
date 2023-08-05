@@ -13,6 +13,8 @@ public class HealthUp : MonoBehaviour
     public int steadinessConstant = 120;
     private int steadiness; 
     private float yDirection;
+
+    public AudioSource playSound;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,8 @@ public class HealthUp : MonoBehaviour
     }
 
     void Update(){
+
+        //Add random direction taken. Steadiness to add stability to direction taken
         if(steadiness == 0)
         {
             yDirection = Random.Range(-1f, 1f);
@@ -55,7 +59,11 @@ public class HealthUp : MonoBehaviour
         if (collidedObject.CompareTag("Player"))
         {
            GameManager.player.health++;
-                Destroy(this.gameObject);
+                playSound.transform.parent = null;
+                playSound.Play();
+
+                Destroy(playSound.gameObject, 2);
+                Destroy(gameObject);
         }   
        
     }

@@ -7,6 +7,7 @@ public class PowerUpSpawn : MonoBehaviour
     public GameObject healthup;
     public GameObject speedup;
     public GameObject powerup;
+    
     private float spawnInterval = 10.0f; // Interval in seconds between each spawn
     private float timer = 0f; 
 

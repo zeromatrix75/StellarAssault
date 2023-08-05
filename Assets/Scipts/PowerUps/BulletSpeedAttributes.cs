@@ -13,7 +13,8 @@ public class BulletSpeedAttributes : MonoBehaviour
     public int steadinessConstant = 120;
     private int steadiness; 
     private float yDirection;
-    
+    public AudioSource playSound;
+    //public AudioClip playClip;    
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,9 @@ public class BulletSpeedAttributes : MonoBehaviour
         if (collidedObject.CompareTag("Player"))
         {
             Player player = collidedObject.GetComponent<Player>();
-
+                if(playSound == null)
+                    Debug.Log("audiosoure is null");
+                Debug.Log("Success in audiosource.play");
 
                 // Code for handling collision with the Player object
                 if(GameManager.inputController.firingSpeed > .16f){
@@ -63,7 +66,12 @@ public class BulletSpeedAttributes : MonoBehaviour
                     Debug.Log("Success Firing Speed: " + GameManager.inputController.firingSpeed);
                 }
 
-                Destroy(this.gameObject);
+                //Keep sound effect from cutting off after destroying object
+                playSound.transform.parent = null;
+                playSound.Play();
+
+                Destroy(playSound.gameObject, 2);
+                Destroy(gameObject);
         }   
        
     }

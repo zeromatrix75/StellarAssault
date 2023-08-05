@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-    private bool isPaused = false;
+    //private bool isPaused = false;
     private float savedTimeScale;
 
     void Update()

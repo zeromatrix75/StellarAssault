@@ -13,6 +13,8 @@ public class BulletUp : MonoBehaviour
     public int steadinessConstant = 120;
     private int steadiness; 
     private float yDirection;
+
+    public AudioSource playSound;
     
     // Start is called before the first frame update
     void Start()
@@ -57,7 +59,11 @@ public class BulletUp : MonoBehaviour
         if (collidedObject.CompareTag("Player"))
         {
            GameManager.inputController.projectileCount++;
-                Destroy(this.gameObject);
+                playSound.transform.parent = null;
+                playSound.Play();
+
+                Destroy(playSound.gameObject, 2);
+                Destroy(gameObject);
         }   
        
     }
