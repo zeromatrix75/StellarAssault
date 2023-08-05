@@ -6,9 +6,13 @@ public class PlayerInputController : MonoBehaviour
 {
     Movement move;
     Player player;
+    public AudioSource buttonPressSound;
+    public OptionsMenu optionsMenu;
+    public PauseManager pauseManager;
 
     public PlayerProjectileAction projectileAction;
     public Transform positionOffset;
+
 
     private bool isFiring = false; // Flag to track if the space button is being held down
     private bool canFire = true; // Flag to track if the player can fire a projectile
@@ -42,6 +46,12 @@ public class PlayerInputController : MonoBehaviour
         else if (Input.GetKey(KeyCode.W))
         {
             move.Move(new Vector3(0f, 1.0f, 0f), player.speed);
+        }
+        else if(Input.GetKey(KeyCode.Escape)){
+            buttonPressSound.Play();
+            optionsMenu.OpenOptionsMenu();
+            pauseManager.PauseGame();
+
         }
     }
 
