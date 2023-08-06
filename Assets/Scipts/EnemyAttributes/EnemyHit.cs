@@ -31,6 +31,11 @@ public class EnemyHit : MonoBehaviour
             GameManager.player.points += 10;
             StartCoroutine(FireExplosion());
         }
+        else{
+            Debug.Log("Other Collided Tag");
+        }
+
+
 
         Destroy(this.gameObject);
     }

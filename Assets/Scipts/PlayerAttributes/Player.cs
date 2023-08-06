@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     public float speed = 3.0f;
     public float points = 0;
 
+    private int currentHealth;
+
+    private ScreenShake screenShake;
+    public AudioSource getHitAudio;
+
     Rigidbody2D rb;
 
     //Awake is called before all other Start calls
@@ -17,6 +22,8 @@ public class Player : MonoBehaviour
 
         //set position of plane
         rb = GetComponent<Rigidbody2D>();
+        screenShake = Camera.main.GetComponent<ScreenShake>();
+        currentHealth = health;
         GameManager.player = this;
     }
     // Start is called before the first frame update
@@ -28,10 +35,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                //Go back to Main Menu on 0 HP. TODO add game over screen
+                //Go back to Main Menu on 0 HP. TODO add game over screen\
+
+        if(currentHealth != health){
+           if(currentHealth > health){
+                getHitAudio.Play();
+                TriggerScreenShake();
+           }
+
+            currentHealth = health;
+        }
+        
         if(this.health == 0){
             SceneManager.LoadScene("MainMenu");
         }//transform.position += new Vector3(3.0f,0,0) * Time.deltaTime;
+    }
+
+    void TriggerScreenShake()
+    {
+        if (screenShake != null)
+        {
+            screenShake.ShakeScreen();
+        }
     }
 
    // public void RandomizeColor(){
