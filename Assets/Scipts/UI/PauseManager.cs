@@ -31,4 +31,8 @@ public class PauseManager : MonoBehaviour
         //isPaused = false;
         Time.timeScale = savedTimeScale;
     }
+
+    public void ResetPauseState(){
+        Time.timeScale = 1f;
+    }
 }
