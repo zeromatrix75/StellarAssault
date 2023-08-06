@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;//freezes rigid body from rotating when hit
     }
     void Start()
     {

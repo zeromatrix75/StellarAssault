@@ -9,6 +9,7 @@ public class EnemyHit : MonoBehaviour
 
     public GameObject explosionPrefab;
     private GameObject currentExplosion;
+    public int pointsGained;
     public Transform positionOffset;
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -22,22 +23,23 @@ public class EnemyHit : MonoBehaviour
             {
                 player.health--;
                 Debug.Log("Success: " + player.health);
+                Destroy(this.gameObject);
             }
         }
-
-        if (collidedObject.CompareTag("Projectile1"))
+        else if (collidedObject.CompareTag("Projectile1"))
         {
             Debug.Log("Hit projectile");
-            GameManager.player.points += 10;
+            GameManager.player.points += pointsGained;
             StartCoroutine(FireExplosion());
+           Destroy(this.gameObject);
         }
-        else{
+        else if(collidedObject.CompareTag("Boundary")){
+            Destroy(this.gameObject);
             Debug.Log("Other Collided Tag");
         }
 
 
 
-        Destroy(this.gameObject);
     }
 
     IEnumerator FireExplosion()

@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     public GameObject Enemy;
-    private float spawnInterval = 0.6f; // Interval in seconds between each spawn
+    public float spawnInterval; // Interval in seconds between each spawn
+    public float spawnStartTime;
+    public float spawnStopTime;
+    public float totalTime;
     private float timer = 0f; 
 
     Camera mainCamera;
@@ -13,6 +16,10 @@ public class EnemySpawn : MonoBehaviour
     float cameraWidth;
     public float minY;
     public float maxY;
+
+    private bool enemy1ShouldSpawn = true;
+    private bool enemy2ShouldSpawn = false;
+
 
     // Start is called before the first frame update
     void Start()
