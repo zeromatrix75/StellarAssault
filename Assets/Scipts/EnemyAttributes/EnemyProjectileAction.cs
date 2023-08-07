@@ -6,6 +6,7 @@ public class EnemyProjectileAction : MonoBehaviour
 {
 
     private Rigidbody2D rb;
+    private Vector3 movementDirection;
     
     public float speed = 12;
 
@@ -13,13 +14,14 @@ public class EnemyProjectileAction : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementDirection = transform.forward;
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.position -= transform.right * Time.fixedDeltaTime * speed;
-        rb.MovePosition(transform.position + (new Vector3(-1.0f, 0f, 0f) * speed * Time.fixedDeltaTime));
+        rb.MovePosition(transform.position + ( -transform.right * speed * Time.fixedDeltaTime));//new Vector3(-1.0f, 0f, 0f)
 
     }
 

@@ -79,8 +79,14 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnProjectile(Vector2 spawnPosition)
     {
-        GameObject newProjectile = Instantiate(Enemy, spawnPosition, Quaternion.identity);
+        /*
+        GameObject newProjectile = Instantiate(Enemy, spawnPosition, Quaternion.identity);//Spawns with no rotation even if on Prefab
         Destroy(newProjectile, 10);//Destroys projectile after 10 seconds
+        */
+        GameObject newProjectile = Instantiate(Enemy, spawnPosition, Enemy.transform.rotation);//Spawn with Prefabs current rotation
+        Destroy(newProjectile, 10); // Destroys projectile after 10 seconds
+
+
     }
 
 
