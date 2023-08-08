@@ -20,6 +20,8 @@ public class EnemySpawn : MonoBehaviour
     float cameraWidth;
     public float minY;
     public float maxY;
+    public float xOffset = 1;
+    public float timeToDestroy = 10;
 
 
     // Start is called before the first frame update
@@ -64,7 +66,7 @@ public class EnemySpawn : MonoBehaviour
             {
                 //int spawnLength = Random.Range(1, 5);//Determine how many projectiles to shoot in a row
                 float spawnY = Random.Range(minY, maxY);
-                float spawnX = mainCamera.transform.position.x + cameraWidth + 1.0f;
+                float spawnX = mainCamera.transform.position.x + cameraWidth + xOffset;
                 //for(int i = 0; i < spawnLength; i++){
                     Vector2 spawnPosition = new Vector2(spawnX, spawnY);
                     SpawnProjectile(spawnPosition);
@@ -84,7 +86,7 @@ public class EnemySpawn : MonoBehaviour
         Destroy(newProjectile, 10);//Destroys projectile after 10 seconds
         */
         GameObject newProjectile = Instantiate(Enemy, spawnPosition, Enemy.transform.rotation);//Spawn with Prefabs current rotation
-        Destroy(newProjectile, 10); // Destroys projectile after 10 seconds
+        Destroy(newProjectile, timeToDestroy); // Destroys projectile after 10 seconds
 
 
     }
