@@ -15,14 +15,12 @@ public class BossHit : MonoBehaviour
     private float burstRadius = 1.5f;
 
     private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
     private void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
         
-        if (spriteRenderer != null)
-        {
-            StartCoroutine(ChangeColorAndAlphaForSplitSecond());
-        }
+        originalColor = spriteRenderer.color;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -76,7 +74,6 @@ IEnumerator FireExplosion()
 
     private IEnumerator ChangeColorAndAlphaForSplitSecond()
     {
-        Color originalColor = spriteRenderer.color;
 
         // Set color to white with 50% alpha
         Color newColor = Color.red;
