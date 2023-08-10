@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     private ScreenShake screenShake;
     public AudioSource getHitAudio;
 
+    public GameObject explosionPrefab;
+    private GameObject currentExplosion;
+
     Rigidbody2D rb;
 
     //Awake is called before all other Start calls
@@ -46,8 +49,10 @@ public class Player : MonoBehaviour
             currentHealth = health;
         }
         
-        if(this.health == 0){
-            SceneManager.LoadScene("MainMenu");
+        if(this.health <= 0){
+            StartCoroutine(FireExplosion());
+            GameManager.gameOver = true;
+            Destroy(this.gameObject);
         }//transform.position += new Vector3(3.0f,0,0) * Time.deltaTime;
     }
 
@@ -87,5 +92,12 @@ public class Player : MonoBehaviour
                 Destroy(this.gameObject);
                 //Invoke("LoadMainMenu", 1.5f);//Wait one second before using method LoadMainMenu()
             }
+    }
+
+    IEnumerator FireExplosion()
+    {
+        currentExplosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        yield return new WaitForSeconds(5f);
+        Destroy(currentExplosion);
     }
 }

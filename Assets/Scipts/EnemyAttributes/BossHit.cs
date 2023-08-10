@@ -14,6 +14,17 @@ public class BossHit : MonoBehaviour
     public Transform positionOffset;
     private float burstRadius = 1.5f;
 
+    private SpriteRenderer spriteRenderer;
+
+    private void Start(){
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+        
+        if (spriteRenderer != null)
+        {
+            StartCoroutine(ChangeColorAndAlphaForSplitSecond());
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collidedObject = collision.gameObject;
@@ -31,7 +42,7 @@ public class BossHit : MonoBehaviour
         {
            bossHealth--;
 
-
+            StartCoroutine(ChangeColorAndAlphaForSplitSecond());
            
            //Destroy(this.gameObject);
            if(bossHealth <= 0){
@@ -62,5 +73,20 @@ IEnumerator FireExplosion()
     GameManager.player.points += pointsGained;
     Destroy(this.gameObject);
 }
+
+    private IEnumerator ChangeColorAndAlphaForSplitSecond()
+    {
+        Color originalColor = spriteRenderer.color;
+
+        // Set color to white with 50% alpha
+        Color newColor = Color.red;
+        newColor.a = 1.0f; // Set alpha 
+        spriteRenderer.color = newColor;
+
+        yield return new WaitForSeconds(0.05f); // Adjust the duration as needed
+
+        // Restore the original color
+        spriteRenderer.color = originalColor;
+    }
 
 }

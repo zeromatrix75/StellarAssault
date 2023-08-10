@@ -14,7 +14,7 @@ public class Boss1Actions : MonoBehaviour
 
     private Movement move;
     private float currentSpeed;
-    private bool shouldFire = true;
+    //private bool shouldFire = true;
     private bool firstMove = true;
     private bool shouldMoveForward = false;
     private bool shouldMoveBackward = false;

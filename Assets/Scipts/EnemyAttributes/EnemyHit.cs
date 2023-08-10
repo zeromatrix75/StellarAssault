@@ -45,6 +45,7 @@ public class EnemyHit : MonoBehaviour
     IEnumerator FireExplosion()
     {
         currentExplosion = Instantiate(explosionPrefab, positionOffset.position, positionOffset.rotation);
-        yield break;
+        yield return new WaitForSeconds(5f);
+        Destroy(currentExplosion);
     }
 }
